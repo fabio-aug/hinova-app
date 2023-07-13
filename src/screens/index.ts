@@ -1,7 +1,7 @@
-import Workshop from './workshop/Workshop';
 import WorkshopList from './workshopList/WorkshopList';
+import WorkshopDetails from './workshopDetails/WorkshopDetails';
 
 export {
-    Workshop,
-    WorkshopList,
+  WorkshopList,
+  WorkshopDetails,
 };
