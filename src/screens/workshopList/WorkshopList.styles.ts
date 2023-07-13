@@ -6,4 +6,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.light,
   },
+  list: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+  },
 });

@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../../global/Styles';
+import { colors, fonts } from '../../global/Styles';
 
 export const styles = StyleSheet.create({
   containerItem: {
     flex: 1,
-    margin: 2,
     padding: 10,
-    width: '99%',
+    marginBottom: 10,
+    width: '100%',
     borderWidth: 1,
     borderRadius: 5,
     alignSelf: 'center',
@@ -30,8 +30,10 @@ export const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     color: colors.dark,
+    fontSize: fonts.title,
   },
   subTitle: {
     color: colors.dark,
+    fontSize: fonts.subTitle,
   },
 });

@@ -39,6 +39,7 @@ function WorkshopList() {
         <Loading />
       ) : (
         <FlatList
+          style={styles.list}
           data={listWorkshop}
           ListEmptyComponent={(<EmptyList />)}
           renderItem={({ item }) => renderItem(item)}

@@ -1,6 +1,8 @@
+import React from 'react';
 import { KeyboardTypeOptions, Text, TextInput, View } from 'react-native';
 
-import React from 'react';
+import { styles } from './Input.styles';
+import { colors } from '../../global/Styles';
 
 interface IProps {
   value: string,
@@ -19,15 +21,17 @@ function Input({
 }: IProps) {
 
   return (
-    <View>
-      <Text>{label}</Text>
+    <View style={styles.container}>
+      <Text style={styles.label}>{label}</Text>
       <TextInput
         value={value}
+        placeholder={label}
+        style={styles.input}
         multiline={multiLines}
         onChangeText={onChange}
-        placeholder={label}
         keyboardType={keyboardType}
         numberOfLines={multiLines ? 3 : 1}
+        placeholderTextColor={`${colors.dark}77`}
       />
     </View>
   );

@@ -1,39 +1,40 @@
 import { StyleSheet } from 'react-native';
 
+import { colors } from '../../global/Styles';
+
 export const styles = StyleSheet.create({
-  card: {
-    backgroundColor: 'white',
-    borderRadius: 16,
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    shadowColor: 'black',
-    shadowOffset: {
-      height: 0,
-      width: 0,
-    },
-    elevation: 1,
-    marginVertical: 20,
+  container: {
+    flex: 1,
+    backgroundColor: colors.light,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+  },
+  imageContainer: {
+    flex: 1,
+    height: 160,
+    borderWidth: 1,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: colors.medium,
   },
   image: {
-    height: 300,
-    width: '100%'
+    height: 155,
+    width: '100%',
+    shadowRadius: 5,
+    borderRadius: 20,
+    shadowOpacity: 1.0,
+    shadowColor: colors.bright,
+    shadowOffset: { width: 0, height: 3 },
   },
-  infoContainer: {
-    padding: 16,
+  buttonContainer: {
+    width: '100%',
+    marginTop: 5,
+    marginBottom: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  name: {
-    fontSize: 22,
-    fontWeight: 'bold',
-  },
-  price: {
-    fontSize: 16,
-    fontWeight: '600',
-    marginBottom: 8,
-  },
-  description: {
-    fontSize: 16,
-    fontWeight: '400',
-    color: '#787878',
-    marginBottom: 16,
+  buttonSize: {
+    width: '70%',
   },
 });
