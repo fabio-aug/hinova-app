@@ -18,10 +18,17 @@ export const styles = StyleSheet.create({
     width: '100%',
     paddingTop: 10,
     paddingVertical: 10,
+    flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
     paddingBottomBottom: 5,
-    justifyContent: 'center',
     backgroundColor: colors.white,
+    justifyContent: 'space-around',
+  },
+  buttonSize: {
+    flex: 0.45,
+  },
+  observationInput: {
+    height: 70,
   },
 });

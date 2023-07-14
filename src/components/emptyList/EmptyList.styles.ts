@@ -1,11 +1,14 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../../global/Styles';
+import { colors, fonts } from '../../global/Styles';
 
 export const styles = StyleSheet.create({
-  text: {
-    color: colors.dark,
-    height: '100%',
-    width: '100%',
+  container: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: fonts.subTitle,
+    color: colors.dark,
   },
 });

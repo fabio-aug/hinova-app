@@ -40,6 +40,7 @@ function WorkshopList() {
       ) : (
         <FlatList
           style={styles.list}
+          contentContainerStyle={styles.containerList}
           data={listWorkshop}
           ListEmptyComponent={(<EmptyList />)}
           renderItem={({ item }) => renderItem(item)}

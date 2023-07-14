@@ -7,7 +7,10 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.light,
   },
   list: {
-    paddingHorizontal: 10,
     paddingVertical: 10,
+    paddingHorizontal: 10,
+  },
+  containerList: {
+    flex: 1,
   },
 });

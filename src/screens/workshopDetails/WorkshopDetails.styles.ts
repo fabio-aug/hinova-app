@@ -5,9 +5,9 @@ import { colors } from '../../global/Styles';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.light,
-    paddingHorizontal: 10,
     paddingVertical: 10,
+    paddingHorizontal: 10,
+    backgroundColor: colors.light,
   },
   imageContainer: {
     flex: 1,

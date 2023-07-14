@@ -1,17 +1,24 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, StyleProp, ViewStyle } from 'react-native';
 
 import { styles } from './Button.styles';
 
 interface IProps {
+  text: string,
   onPress: () => void,
-  text: string
+  type?: 'primary' | 'outlined',
+  styleButton?: StyleProp<ViewStyle>
 }
 
-function Button({ onPress, text }: IProps) {
+function Button({ onPress, text, styleButton, type = 'primary' }: IProps) {
+  const textType = type === 'primary' ? styles.textPrimary : styles.textOutlined;
+  const buttonType = type === 'primary' ? styles.buttonPrimary : styles.buttonOutlined;
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Text style={styles.text}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.container, buttonType, styleButton]}
+    >
+      <Text style={[styles.text, textType]}>
         {text}
       </Text>
     </TouchableOpacity>

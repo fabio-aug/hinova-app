@@ -2,10 +2,10 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   containerLoading: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
     width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
 });

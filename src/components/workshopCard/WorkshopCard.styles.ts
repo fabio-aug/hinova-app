@@ -3,12 +3,10 @@ import { colors, fonts } from '../../global/Styles';
 
 export const styles = StyleSheet.create({
   containerItem: {
-    flex: 1,
     padding: 10,
-    marginBottom: 10,
-    width: '100%',
     borderWidth: 1,
     borderRadius: 5,
+    marginBottom: 10,
     alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',

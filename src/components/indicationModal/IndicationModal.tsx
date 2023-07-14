@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Modal, ScrollView, View } from 'react-native';
 
 import Input from '../input/Input';
-import { Log } from '../../modules';
 import Button from '../button/Button';
 import Loading from '../loading/Loading';
 import Section from '../section/Section';
+import { Log, Mask } from '../../modules';
 import { styles } from './IndicationModal.styles';
 import { IWorkshopDTO } from '../../services/workshop/Workshop.interface';
 import IndicationRequest from '../../services/indication/Indication.request';
@@ -13,8 +13,8 @@ import { IIndicationInput } from '../../services/indication/Indication.inteface'
 
 interface IProps {
   visible: boolean,
-  whorkshop: IWorkshopDTO,
-  closeModal: () => void
+  closeModal: () => void,
+  whorkshop: IWorkshopDTO
 }
 
 function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
@@ -24,9 +24,11 @@ function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
   const [associateEmail, setAssociateEmail] = useState<string>('');
   const [associatePhone, setAssociatePhone] = useState<string>('');
   const [associateLicensePlate, setAssociateLicensePlate] = useState<string>('');
+
   const [friendName, setFriendName] = useState<string>('');
   const [friendPhone, setFriendPhone] = useState<string>('');
   const [friendEmail, setFriendEmail] = useState<string>('');
+
   const [observation, setObservation] = useState<string>('');
 
   function onPress() {
@@ -51,6 +53,7 @@ function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
     setLoading(true);
     IndicationRequest.IndicationFriend(dto).then((res) => {
       if (res.Sucesso) {
+        onClose();
         Log.succes(res.Sucesso);
       } else {
         Log.error(res.RetornoErro.retornoErro || 'Não foi possível buscar as oficinas!');
@@ -98,7 +101,7 @@ function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
             <Input
               label="CPF"
               multiLines={false}
-              value={associateCpf}
+              value={Mask.applyMask(Mask.masks.cpf, associateCpf)}
               keyboardType="numeric"
               onChange={setAssociateCpf}
             />
@@ -119,7 +122,7 @@ function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
             <Input
               label="Telefone"
               multiLines={false}
-              value={associatePhone}
+              value={Mask.applyMask(Mask.masks.phone, associatePhone)}
               keyboardType="numeric"
               onChange={setAssociatePhone}
             />
@@ -140,7 +143,7 @@ function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
             <Input
               label="Telefone do amigo"
               multiLines={false}
-              value={friendPhone}
+              value={Mask.applyMask(Mask.masks.phone, friendPhone)}
               keyboardType="numeric"
               onChange={setFriendPhone}
             />
@@ -154,13 +157,24 @@ function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
             <Input
               label="Observações"
               multiLines={true}
+              styleInput={styles.observationInput}
               value={observation}
               keyboardType="default"
               onChange={setObservation}
             />
           </ScrollView>
           <View style={styles.buttonContainer}>
-            <Button onPress={onPress} text="Confirmar" />
+            <Button
+              text="Confirmar"
+              onPress={onPress}
+              styleButton={styles.buttonSize}
+            />
+            <Button
+              text="Cancelar"
+              type="outlined"
+              onPress={onClose}
+              styleButton={styles.buttonSize}
+            />
           </View>
         </View>
       )}
