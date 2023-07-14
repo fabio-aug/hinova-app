@@ -6,9 +6,9 @@ import Button from '../button/Button';
 import Loading from '../loading/Loading';
 import Section from '../section/Section';
 import { Log, Mask } from '../../modules';
+import { useDoRequest } from '../../hooks';
 import { styles } from './IndicationModal.styles';
 import { IWorkshopDTO } from '../../services/workshop/Workshop.interface';
-import IndicationRequest from '../../services/indication/Indication.request';
 import { IIndicationInput } from '../../services/indication/Indication.inteface';
 
 interface IProps {
@@ -18,7 +18,6 @@ interface IProps {
 }
 
 function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
-  const [loading, setLoading] = useState<boolean>(false);
   const [associateCpf, setAssociateCpf] = useState<string>('');
   const [associateName, setAssociateName] = useState<string>('');
   const [associateEmail, setAssociateEmail] = useState<string>('');
@@ -30,6 +29,8 @@ function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
   const [friendEmail, setFriendEmail] = useState<string>('');
 
   const [observation, setObservation] = useState<string>('');
+
+  const { doRequest, loading } = useDoRequest((s) => s.indicaton.IndicationFriend);
 
   function onPress() {
     const dto: IIndicationInput = {
@@ -50,8 +51,7 @@ function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
       Copias: [],
     };
 
-    setLoading(true);
-    IndicationRequest.IndicationFriend(dto).then((res) => {
+    doRequest(dto).then((res) => {
       if (res.Sucesso) {
         onClose();
         Log.succes(res.Sucesso);
@@ -60,8 +60,6 @@ function IndicationModal({ whorkshop, visible, closeModal }: IProps) {
       }
     }).catch((e) => {
       Log.error(e.message || 'Não foi possível buscar as oficinas!');
-    }).finally(() => {
-      setLoading(false);
     });
   }
 

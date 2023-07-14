@@ -2,10 +2,10 @@ import RestApi from '../../modules/RestApi';
 import { IIndicationInput, IIndicationOutput } from './Indication.inteface';
 
 class IndicationRequest {
-  private URL_WORKSHOP = '/Indicacao';
+  private static URL_WORKSHOP = '/Indicacao';
 
   public IndicationFriend(dto: IIndicationInput): Promise<IIndicationOutput> {
-    return RestApi.httpPost(`${this.URL_WORKSHOP}`, dto).then((response) => response);
+    return RestApi.httpPost(`${IndicationRequest.URL_WORKSHOP}`, dto).then((response) => response);
   }
 }
 
